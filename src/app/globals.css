@@ -17,8 +17,9 @@
 
 @layer base {
   html {
-    font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", 
-                 "Yu Gothic", "游ゴシック", theme(font-family.body), sans-serif;
+    font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN W3",
+                 "Yu Mincho", "游明朝", "Times New Roman", 
+                 theme(font-family.body), serif;
     font-optical-sizing: auto;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
