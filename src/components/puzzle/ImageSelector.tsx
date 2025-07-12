@@ -58,8 +58,8 @@ export function ImageSelector() {
               />
             </div>
             <div className="p-4">
-              <h3 className="font-bold text-gray-800 mb-1 text-base" style={{ fontSize: '16px', lineHeight: '1.5' }}>{image.nameJa}</h3>
-              <p className="text-sm text-gray-600" style={{ fontSize: '14px', lineHeight: '1.4' }}>{image.name}</p>
+              <h3 className="font-bold text-gray-800 mb-1 text-xs" style={{ fontSize: '12px', lineHeight: '1.3' }}>{image.nameJa}</h3>
+              <p className="text-xs text-gray-600" style={{ fontSize: '11px', lineHeight: '1.2' }}>{image.name}</p>
             </div>
           </button>
         ))}
