@@ -42,8 +42,8 @@ export function EmbeddedPuzzleSection() {
           <EmbeddedPuzzleGame />
         </div>
 
-        <div className="mt-16">
-          <p className="luxury-text text-luxury-cream/60 text-sm tracking-wide">
+        <div className="mt-16 text-center">
+          <p className="luxury-text text-luxury-cream/60 text-sm tracking-wide mx-auto" style={{ maxWidth: 'none' }}>
             ゲームをお楽しみいただき、特別な体験をご堪能ください
           </p>
         </div>

@@ -50,8 +50,15 @@
   h2 { font-size: clamp(1.5rem, 2.8vw, 2.2rem); }
   h3 { font-size: clamp(1.3rem, 2.2vw, 1.8rem); }
   
-  p, .text-content {
+  .text-content {
     max-width: clamp(45ch, 90%, 75ch);
+    line-height: 1.8;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-break: normal;
+  }
+  
+  p {
     line-height: 1.8;
     word-break: break-word;
     overflow-wrap: break-word;

@@ -45,8 +45,8 @@ export function DifficultySelector() {
         <h2 className="text-2xl font-bold text-gray-800 mb-4">
           難易度を選択してください
         </h2>
-        <p className="text-gray-600">
-          クリア報酬：初級 5%OFF / 中級 8%OFF / 上級 12%OFF
+        <p className="text-gray-600 mx-auto" style={{ maxWidth: 'none' }}>
+          クリア報酬：初級(3×3) 5%OFF / 中級(4×4) 8%OFF / 上級(5×5) 12%OFF
         </p>
       </div>
 
