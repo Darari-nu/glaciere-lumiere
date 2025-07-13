@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGift, faClock, faUserTie, faTrophy, faNewspaper } from '@fortawesome/free-solid-svg-icons'
 
@@ -153,9 +150,19 @@ const newsArticles = {
   }
 }
 
-export default function NewsArticlePage() {
-  const params = useParams()
-  const id = params.id as string
+export function generateStaticParams() {
+  return [
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+    { id: '4' },
+    { id: '5' }
+  ]
+}
+
+export default async function NewsArticlePage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params
+  const id = resolvedParams.id
   const article = newsArticles[id as keyof typeof newsArticles]
 
   if (!article) {

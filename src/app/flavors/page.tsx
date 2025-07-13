@@ -79,23 +79,11 @@ export default function FlavorsPage() {
         <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {flavors.map((flavor) => (
             <div key={flavor.id} className="bg-black/20 backdrop-blur-sm rounded-2xl border border-brand-secondary/20 overflow-hidden hover:border-brand-secondary/40 transition-all duration-300 transform hover:scale-105">
-              <div className="aspect-square relative overflow-hidden">
+              <div className="aspect-square relative overflow-hidden bg-gradient-to-br from-brand-secondary/20 to-brand-gold-light/20 flex items-center justify-center">
                 <img 
                   src={`/images/products/${flavor.id}-cup.jpg`}
                   alt={flavor.nameJa}
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement
-                    target.style.display = 'none'
-                    const parent = target.parentElement
-                    if (parent) {
-                      parent.innerHTML = `
-                        <div class="w-full h-full bg-gradient-to-br from-brand-secondary/20 to-brand-gold-light/20 flex items-center justify-center">
-                          <span class="text-6xl">${flavor.emoji}</span>
-                        </div>
-                      `
-                    }
-                  }}
                 />
               </div>
               <div className="p-6">
