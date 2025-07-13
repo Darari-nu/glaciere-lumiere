@@ -1,21 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Force cache busting for Vercel deployment
+  // Static export configuration
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true
+  },
+  // Force cache busting
   generateEtags: false,
   experimental: {
     forceSwcTransforms: true,
   },
-  headers: async () => [
-    {
-      source: '/(.*)',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'no-cache, no-store, must-revalidate',
-        },
-      ],
-    },
-  ],
 }
 
 module.exports = nextConfig
