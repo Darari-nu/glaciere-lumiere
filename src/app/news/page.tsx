@@ -45,66 +45,51 @@ const newsItems = [
 
 export default function NewsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-luxury-cream to-white">
-      {/* ヘッダー */}
-      <header className="bg-luxury-charcoal text-white py-4">
-        <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-heading gold-gradient">
-            Glacière Lumière
+    <div className="min-h-screen bg-gradient-to-b from-brand-primary via-luxury-charcoal to-brand-primary">
+      <div className="max-w-4xl mx-auto px-6 py-16">
+        <div className="text-center mb-16">
+          <Link href="/" className="text-brand-secondary hover:underline mb-8 inline-block">
+            ← ホームに戻る
           </Link>
-          <nav className="hidden md:flex space-x-6">
-            <Link href="/" className="hover:text-brand-secondary transition-colors">ホーム</Link>
-            <Link href="/about" className="hover:text-brand-secondary transition-colors">ブランドについて</Link>
-            <Link href="/flavors" className="hover:text-brand-secondary transition-colors">フレーバー</Link>
-            <Link href="/news" className="text-brand-secondary">ニュース</Link>
-            <Link href="/contact" className="hover:text-brand-secondary transition-colors">お問い合わせ</Link>
-          </nav>
-        </div>
-      </header>
-
-      {/* メインコンテンツ */}
-      <main className="max-w-4xl mx-auto px-4 py-16">
-        {/* ヒーローセクション */}
-        <section className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-heading text-luxury-charcoal mb-6">
-            ニュース
+          <h1 className="text-5xl md:text-7xl font-heading gold-gradient mb-8 tracking-tight">
+            News
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-luxury-cream/80 max-w-2xl mx-auto">
             Glacière Lumièreの最新情報をお届けします
           </p>
-        </section>
+        </div>
 
         {/* ニュース一覧 */}
-        <section className="space-y-8">
+        <section className="space-y-8 mb-16">
           {newsItems.map((item) => (
-            <article key={item.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+            <article key={item.id} className="bg-black/20 backdrop-blur-sm rounded-2xl border border-brand-secondary/20 overflow-hidden hover:border-brand-secondary/40 transition-all duration-300">
               <div className="p-8">
                 <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  <div className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-pink-100 to-orange-100 rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-20 h-20 bg-brand-secondary/20 rounded-full flex items-center justify-center">
                     <span className="text-3xl">{item.image}</span>
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
-                      <time className="text-sm text-gray-500 font-mono">{item.date}</time>
+                      <time className="text-sm text-luxury-cream/70 font-mono">{item.date}</time>
                       <span className={`
                         inline-block px-3 py-1 rounded-full text-xs font-semibold
-                        ${item.category === '新商品' ? 'bg-green-100 text-green-800' : ''}
-                        ${item.category === 'お知らせ' ? 'bg-blue-100 text-blue-800' : ''}
-                        ${item.category === 'イベント' ? 'bg-purple-100 text-purple-800' : ''}
-                        ${item.category === '受賞' ? 'bg-yellow-100 text-yellow-800' : ''}
-                        ${item.category === 'メディア' ? 'bg-pink-100 text-pink-800' : ''}
+                        ${item.category === '新商品' ? 'bg-green-600/20 text-green-300 border border-green-500/30' : ''}
+                        ${item.category === 'お知らせ' ? 'bg-blue-600/20 text-blue-300 border border-blue-500/30' : ''}
+                        ${item.category === 'イベント' ? 'bg-purple-600/20 text-purple-300 border border-purple-500/30' : ''}
+                        ${item.category === '受賞' ? 'bg-brand-secondary/20 text-brand-secondary border border-brand-secondary/30' : ''}
+                        ${item.category === 'メディア' ? 'bg-pink-600/20 text-pink-300 border border-pink-500/30' : ''}
                       `}>
                         {item.category}
                       </span>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-luxury-charcoal mb-3 leading-tight">
+                    <h2 className="text-xl md:text-2xl font-bold text-brand-secondary mb-3 leading-tight">
                       {item.title}
                     </h2>
-                    <p className="text-gray-700 leading-relaxed">
+                    <p className="text-luxury-cream/90 leading-relaxed text-content japanese-text">
                       {item.excerpt}
                     </p>
                     <div className="mt-4">
-                      <button className="text-brand-secondary hover:text-yellow-600 font-semibold text-sm transition-colors duration-300">
+                      <button className="text-brand-gold-light hover:text-brand-secondary font-semibold text-sm transition-colors duration-300">
                         続きを読む →
                       </button>
                     </div>
@@ -116,23 +101,23 @@ export default function NewsPage() {
         </section>
 
         {/* お知らせ */}
-        <section className="mt-16">
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200">
-            <h2 className="text-2xl font-bold text-luxury-charcoal mb-4 flex items-center">
+        <section className="mb-16">
+          <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-brand-secondary/20">
+            <h2 className="text-2xl font-bold text-brand-secondary mb-4 flex items-center">
               <span className="text-2xl mr-3">📢</span>
               重要なお知らせ
             </h2>
             <div className="space-y-4">
-              <div className="bg-white rounded-lg p-4 border-l-4 border-red-500">
-                <h3 className="font-semibold text-luxury-charcoal mb-2">夏季休業のお知らせ</h3>
-                <p className="text-gray-700 text-sm">
+              <div className="bg-black/30 rounded-lg p-4 border-l-4 border-red-500">
+                <h3 className="font-semibold text-brand-gold-light mb-2">夏季休業のお知らせ</h3>
+                <p className="text-luxury-cream/80 text-sm text-content japanese-text">
                   8月13日（火）〜8月16日（金）は夏季休業とさせていただきます。
                   8月17日（土）より通常営業を再開いたします。
                 </p>
               </div>
-              <div className="bg-white rounded-lg p-4 border-l-4 border-yellow-500">
-                <h3 className="font-semibold text-luxury-charcoal mb-2">台風・荒天時の営業について</h3>
-                <p className="text-gray-700 text-sm">
+              <div className="bg-black/30 rounded-lg p-4 border-l-4 border-yellow-500">
+                <h3 className="font-semibold text-brand-gold-light mb-2">台風・荒天時の営業について</h3>
+                <p className="text-luxury-cream/80 text-sm text-content japanese-text">
                   台風や荒天の際は、お客様の安全を考慮し臨時休業する場合があります。
                   最新の営業状況はInstagram公式アカウントをご確認ください。
                 </p>
@@ -142,12 +127,12 @@ export default function NewsPage() {
         </section>
 
         {/* ニュースレター登録 */}
-        <section className="mt-16">
-          <div className="bg-gradient-to-r from-luxury-charcoal to-gray-800 rounded-2xl p-8 text-white text-center">
-            <h2 className="text-2xl font-heading mb-4">
+        <section className="mb-16">
+          <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-8 border border-brand-secondary/20 text-center">
+            <h2 className="text-2xl font-heading text-brand-secondary mb-4">
               ニュースレター登録
             </h2>
-            <p className="mb-6 text-luxury-cream/80">
+            <p className="mb-6 text-luxury-cream/80 text-content japanese-text">
               新商品情報やイベントのお知らせを、いち早くお届けします
             </p>
             <div className="max-w-md mx-auto">
@@ -155,9 +140,9 @@ export default function NewsPage() {
                 <input 
                   type="email" 
                   placeholder="メールアドレスを入力"
-                  className="flex-1 px-4 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-secondary"
+                  className="flex-1 px-4 py-3 rounded-full bg-black/30 border border-brand-secondary/30 text-luxury-cream placeholder-luxury-cream/50 focus:outline-none focus:border-brand-secondary"
                 />
-                <button className="bg-brand-secondary hover:bg-yellow-500 text-luxury-charcoal font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                <button className="bg-gradient-to-r from-brand-secondary to-brand-gold-light text-brand-primary font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
                   登録
                 </button>
               </div>
@@ -169,40 +154,15 @@ export default function NewsPage() {
         </section>
 
         {/* CTA */}
-        <section className="text-center mt-16">
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h2 className="text-2xl font-heading text-luxury-charcoal mb-4">
-              店舗でお待ちしています
-            </h2>
-            <p className="text-gray-600 mb-6">
-              最新のフレーバーや季節限定商品を、ぜひ店頭でお楽しみください
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/puzzle" 
-                className="inline-block bg-brand-secondary hover:bg-yellow-500 text-luxury-charcoal font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105"
-              >
-                パズルで割引クーポン
-              </Link>
-              <Link 
-                href="/contact" 
-                className="inline-block border-2 border-luxury-charcoal text-luxury-charcoal hover:bg-luxury-charcoal hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300"
-              >
-                アクセス・営業時間
-              </Link>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* フッター */}
-      <footer className="bg-luxury-charcoal text-white py-8 mt-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-luxury-cream/60">
-            © 2024 Glacière Lumière. All rights reserved.
-          </p>
+        <div className="text-center">
+          <Link
+            href="/"
+            className="bg-gradient-to-r from-brand-secondary to-brand-gold-light text-brand-primary px-8 py-4 rounded-full font-heading text-lg tracking-wider hover:shadow-2xl hover:shadow-brand-secondary/30 transition-all duration-300 transform hover:scale-105"
+          >
+            ホームに戻る
+          </Link>
         </div>
-      </footer>
+      </div>
     </div>
   )
 }
