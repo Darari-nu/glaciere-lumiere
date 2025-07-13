@@ -13,6 +13,10 @@
   --font-family-heading: 'Cormorant Garamond', serif;
   --font-family-subheading: 'Source Serif Pro', serif;
   --font-family-body: 'Crimson Text', serif;
+  
+  /* Puzzle image text sizes - Tailwind v4 compatible */
+  --puzzle-title-size: 14px;
+  --puzzle-subtitle-size: 12px;
 }
 
 @layer base {

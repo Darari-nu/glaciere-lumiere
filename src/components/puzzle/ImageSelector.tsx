@@ -58,8 +58,25 @@ export function ImageSelector() {
               />
             </div>
             <div className="p-4">
-              <h3 className="font-bold text-gray-800 mb-1">{image.nameJa}</h3>
-              <p className="text-sm text-gray-600">{image.name}</p>
+              <h3 
+                className="font-bold text-gray-800 mb-1" 
+                style={{
+                  fontSize: 'var(--puzzle-title-size, 14px)',
+                  lineHeight: '1.3',
+                  fontWeight: '700'
+                }}
+              >
+                {image.nameJa}
+              </h3>
+              <p 
+                className="text-gray-600" 
+                style={{
+                  fontSize: 'var(--puzzle-subtitle-size, 12px)',
+                  lineHeight: '1.2'
+                }}
+              >
+                {image.name}
+              </p>
             </div>
           </button>
         ))}
