@@ -58,11 +58,13 @@ export function ImageSelector() {
               />
             </div>
             <div className="p-4">
-              {/* 英語のみ表示 - 日本語完全削除 */}
               <div className="text-center">
-                <span style={{ fontSize: '14px', fontWeight: 'bold', color: '#374151' }}>
+                <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#374151' }}>
+                  {image.nameJa}
+                </div>
+                <div style={{ fontSize: '12px', color: '#6B7280', marginTop: '2px' }}>
                   {image.name}
-                </span>
+                </div>
               </div>
             </div>
           </button>

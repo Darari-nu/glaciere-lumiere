@@ -167,16 +167,63 @@ src/
     └── puzzle-images.ts    # パズル画像データ
 ```
 
+### Vercel CLI デプロイ問題と解決 (2025-07-13)
+
+#### 問題の経緯
+**症状**: GitHubへのpushで変更が本番環境に反映されない
+- ローカル環境: パズル画像テキスト修正済み
+- 本番環境: 7時間前のデプロイのまま更新されず
+- GitHub Pages、Netlifyでも同様の問題
+
+#### 根本原因
+1. **Vercel CLI未ログイン**: GitHub連携の自動デプロイが機能せず
+2. **プロジェクト識別ミス**: 新規test4プロジェクト作成 → 既存glaciere-lumiereプロジェクトが対象
+
+#### 解決手順
+```bash
+# 1. Vercel CLI インストール・ログイン
+npm i -g vercel
+vercel login  # GitHubアカウントで認証
+
+# 2. 正しいプロジェクトにリンク
+vercel link --project=glaciere-lumiere --yes
+
+# 3. 本番デプロイ実行
+vercel --prod --yes
+```
+
+#### 成功結果
+- **デプロイURL**: https://glaciere-lumiere.vercel.app
+- **サブURL**: https://glaciere-lumiere-standard847385-gmailcoms-projects.vercel.app
+- **状態**: ローカルの修正内容が正常に反映
+
+#### 今後のデプロイ手順
+```bash
+# 通常のデプロイ（修正後）
+git add .
+git commit -m "修正内容"
+git push
+vercel --prod --yes  # 確実にデプロイを反映させる場合
+```
+
 ### 運用メモ
 
 #### 修正時の注意点
 1. **フォント変更**: ブランドイメージに影響するため慎重に
 2. **CSS変更**: グローバル設定が他コンポーネントに影響する可能性
 3. **パズルゲーム**: 状態管理の複雑性に注意
-4. **デプロイ**: clean-master → master の同期を忘れずに
+4. **デプロイ**: Vercel CLI経由で確実な反映を確認
+5. **プロジェクト識別**: 正しいglaciere-lumiereプロジェクトか確認
+
+#### デプロイトラブルシューティング
+1. `vercel ls` でデプロイ状況確認
+2. `vercel projects ls` で対象プロジェクト確認
+3. CLI経由の手動デプロイを実行
+4. デプロイ完了後、本番URLで動作確認
 
 #### 今後の改善案
 1. CSS Modules導入でスタイルの競合を防止
 2. E2Eテストの追加
 3. パフォーマンス監視の強化
 4. アクセシビリティの向上
+5. CI/CDパイプラインの安定化
