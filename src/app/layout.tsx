@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     siteName: 'Glacière Lumière',
     images: [
       {
-        url: '/images/ogp-image.svg',
+        url: '/images/ogp-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Glacière Lumière - Premium Gelato Experience',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Glacière Lumière | Premium Gelato',
     description: '最高級素材で作る極上のジェラート。パズルゲームをクリアして特別割引をゲット！',
-    images: ['/images/ogp-image.svg'],
+    images: ['/images/ogp-image.jpg'],
   },
 }
 
