@@ -222,6 +222,110 @@ vercel --prod --yes  # 確実にデプロイを反映させる場合
 3. CLI経由の手動デプロイを実行
 4. デプロイ完了後、本番URLで動作確認
 
+### OGP画像設定とトラブルシューティング (2025-07-13)
+
+#### 問題の経緯
+**症状**: SNS（Discord、LINE、Facebook等）でサイトシェア時にOGP画像が表示されない
+- 初期実装: SVG形式の画像を使用
+- 結果: SNSの多くがSVG形式のOGP画像を認識しない
+
+#### 根本原因と解決策
+1. **SVG形式の非対応**: 多くのSNSプラットフォームはSVG画像をOGP画像として認識しない
+2. **解決手順**:
+   ```bash
+   # 既存のジェラート画像をOGP用にコピー
+   cp public/images/products/peach-cup.jpg public/images/ogp-image.jpg
+   
+   # metadata設定をJPG形式に変更
+   # layout.tsx内の画像パスを .svg → .jpg に変更
+   
+   # デプロイして反映
+   git add . && git commit -m "OGP画像をSVGからJPGに変更"
+   git push origin clean-master
+   vercel --prod --yes
+   ```
+
+#### OGP設定詳細
+```typescript
+// src/app/layout.tsx
+export const metadata: Metadata = {
+  openGraph: {
+    title: 'Glacière Lumière | Premium Gelato',
+    description: '最高級素材で作る極上のジェラート。パズルゲームをクリアして特別割引をゲット！',
+    url: 'https://glaciere-lumiere.vercel.app',
+    siteName: 'Glacière Lumière',
+    images: [
+      {
+        url: '/images/ogp-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Glacière Lumière - Premium Gelato Experience',
+      },
+    ],
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Glacière Lumière | Premium Gelato',
+    description: '最高級素材で作る極上のジェラート。パズルゲームをクリアして特別割引をゲット！',
+    images: ['/images/ogp-image.jpg'],
+  },
+}
+```
+
+#### OGP表示確認方法
+1. **Facebook OGPデバッガー**（最も確実）:
+   - https://developers.facebook.com/tools/debug/
+   - URLを入力して「デバッグ」→「再度スクレイピング」
+
+2. **Twitter Card Validator**:
+   - https://cards-dev.twitter.com/validator
+
+3. **画像直接確認**:
+   - https://glaciere-lumiere.vercel.app/images/ogp-image.jpg
+
+4. **実際のSNSテスト**:
+   - LINE: URLを貼り付けてプレビュー確認
+   - Discord: URLを貼り付け（キャッシュ注意）
+   - Slack: URLを貼り付けてプレビュー確認
+
+#### キャッシュ問題と対処法
+**症状**: OGP画像を修正したのにSNSで古い画像/情報が表示される
+
+**原因**: SNSプラットフォームがOGP情報をキャッシュしている
+
+**対処法**:
+1. **Facebook OGPデバッガーでキャッシュクリア**
+   - 「再度スクレイピング」ボタンをクリック
+   - 最も効果的な方法
+
+2. **URLパラメータ追加**
+   ```
+   https://glaciere-lumiere.vercel.app/?v=1
+   https://glaciere-lumiere.vercel.app/?v=2
+   ```
+   - 異なるURLとしてSNSに認識させる
+
+3. **時間を置く**
+   - Discord: 数分～数時間
+   - Twitter: 数分～30分
+   - Facebook: 即座（デバッガー使用時）
+
+#### 成功確認
+- ✅ 画像ファイル: https://glaciere-lumiere.vercel.app/images/ogp-image.jpg （アクセス可能）
+- ✅ Content-Type: image/jpeg （正しい形式）
+- ✅ ファイルサイズ: 231KB （適切なサイズ）
+- ✅ OGPメタデータ: 正常に設定済み
+- ✅ SNSでの表示: LINE、Facebook、Slackで確認済み
+
+#### 今後の注意点
+1. **画像形式**: OGP用画像は必ずJPG/PNG形式を使用
+2. **画像サイズ**: 1200×630px推奨（SNS最適サイズ）
+3. **ファイルサイズ**: 1MB以下推奨
+4. **キャッシュ**: 修正後は必ずFacebook OGPデバッガーでキャッシュクリア
+5. **テスト**: 複数のSNSプラットフォームで動作確認
+
 #### 今後の改善案
 1. CSS Modules導入でスタイルの競合を防止
 2. E2Eテストの追加
