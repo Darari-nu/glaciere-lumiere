@@ -59,22 +59,11 @@ export function ImageSelector() {
             </div>
             <div className="p-4">
               <div 
-                className="font-bold text-gray-800 mb-1" 
+                className="font-bold text-gray-800 mb-1 text-center" 
                 style={{
-                  fontSize: '12px !important',
-                  lineHeight: '1.3 !important',
-                  fontWeight: '700 !important',
-                  fontFamily: 'inherit !important'
-                }}
-              >
-                {image.nameJa}
-              </div>
-              <div 
-                className="text-gray-600" 
-                style={{
-                  fontSize: '11px !important',
-                  lineHeight: '1.2 !important',
-                  fontFamily: 'inherit !important'
+                  fontSize: '14px !important',
+                  lineHeight: '1.4 !important',
+                  fontWeight: '600 !important'
                 }}
               >
                 {image.name}
