@@ -109,10 +109,10 @@ export default function PrivacyPage() {
                 <strong>Glacière Lumière 個人情報保護責任者</strong>
               </p>
               <p className="text-gray-700 mb-2">
-                住所：〒150-0001 東京都渋谷区神宮前6-12-20 J6フロントビル 1F
+                住所：〒100-0001 東京都千代田区千代田1-1-1 ルミエールビル 1F
               </p>
               <p className="text-gray-700 mb-2">
-                電話：03-5123-4567
+                電話：03-****-****
               </p>
               <p className="text-gray-700">
                 メール：privacy@glaciere-lumiere.jp

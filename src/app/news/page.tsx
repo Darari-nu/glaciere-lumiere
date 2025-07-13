@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGift, faClock, faUserTie, faTrophy, faNewspaper } from '@fortawesome/free-solid-svg-icons'
 
 const newsItems = [
   {
@@ -7,7 +9,7 @@ const newsItems = [
     category: '新商品',
     title: '夏季限定「メロン・エスティーヴォ」販売開始',
     excerpt: '茨城県産クラウンメロンを使用した夏季限定フレーバーの販売を開始いたします。',
-    image: '🍈'
+    icon: faGift
   },
   {
     id: 2,
@@ -15,7 +17,7 @@ const newsItems = [
     category: 'お知らせ',
     title: '7月の営業時間変更について',
     excerpt: '夏季期間中は営業時間を延長し、10:00-22:00とさせていただきます。',
-    image: '⏰'
+    icon: faClock
   },
   {
     id: 3,
@@ -23,7 +25,7 @@ const newsItems = [
     category: 'イベント',
     title: 'ジェラート作り体験教室開催',
     excerpt: '職人による本格的なジェラート作り体験教室を8月に開催予定です。',
-    image: '👨‍🍳'
+    icon: faUserTie
   },
   {
     id: 4,
@@ -31,7 +33,7 @@ const newsItems = [
     category: '受賞',
     title: '国際ジェラート大会で金賞受賞',
     excerpt: 'イタリア・ミラノで開催された国際ジェラート大会で当店の「ピーチ・ソルベット」が金賞を受賞いたしました。',
-    image: '🏆'
+    icon: faTrophy
   },
   {
     id: 5,
@@ -39,7 +41,7 @@ const newsItems = [
     category: 'メディア',
     title: 'グルメ雑誌「Tokyo Gourmet」に掲載',
     excerpt: '月刊グルメ雑誌「Tokyo Gourmet」7月号の特集「注目のスイーツ店」に掲載されました。',
-    image: '📰'
+    icon: faNewspaper
   }
 ]
 
@@ -66,7 +68,7 @@ export default function NewsPage() {
               <div className="p-8">
                 <div className="flex flex-col md:flex-row md:items-start gap-6">
                   <div className="flex-shrink-0 w-20 h-20 bg-brand-secondary/20 rounded-full flex items-center justify-center">
-                    <span className="text-3xl">{item.image}</span>
+                    <FontAwesomeIcon icon={item.icon} className="text-3xl text-brand-secondary" />
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
@@ -89,9 +91,9 @@ export default function NewsPage() {
                       {item.excerpt}
                     </p>
                     <div className="mt-4">
-                      <button className="text-brand-gold-light hover:text-brand-secondary font-semibold text-sm transition-colors duration-300">
+                      <Link href={`/news/${item.id}`} className="text-brand-gold-light hover:text-brand-secondary font-semibold text-sm transition-colors duration-300">
                         続きを読む →
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

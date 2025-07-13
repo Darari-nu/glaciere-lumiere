@@ -53,9 +53,9 @@ export function Footer() {
               <div>
                 <p className="font-semibold text-luxury-cream mb-1">本店</p>
                 <p className="text-sm leading-relaxed">
-                  〒150-0001<br />
-                  東京都渋谷区神宮前6-12-20<br />
-                  J6フロントビル 1F
+                  〒100-0001<br />
+                  東京都千代田区千代田1-1-1<br />
+                  ルミエールビル 1F
                 </p>
               </div>
               <div>
@@ -69,7 +69,7 @@ export function Footer() {
               <div>
                 <p className="font-semibold text-luxury-cream mb-1">お問い合わせ</p>
                 <p className="text-sm">
-                  TEL: 03-5123-4567<br />
+                  TEL: 03-****-****<br />
                   Email: info@glaciere-lumiere.jp
                 </p>
               </div>

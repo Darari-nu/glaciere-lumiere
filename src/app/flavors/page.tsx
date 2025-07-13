@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLeaf, faSeedling, faSnowflake } from '@fortawesome/free-solid-svg-icons'
 
 const flavors = [
   {
@@ -77,8 +79,24 @@ export default function FlavorsPage() {
         <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {flavors.map((flavor) => (
             <div key={flavor.id} className="bg-black/20 backdrop-blur-sm rounded-2xl border border-brand-secondary/20 overflow-hidden hover:border-brand-secondary/40 transition-all duration-300 transform hover:scale-105">
-              <div className="aspect-square bg-gradient-to-br from-brand-secondary/20 to-brand-gold-light/20 flex items-center justify-center">
-                <span className="text-6xl">{flavor.emoji}</span>
+              <div className="aspect-square relative overflow-hidden">
+                <img 
+                  src={`/images/products/${flavor.id}-cup.jpg`}
+                  alt={flavor.nameJa}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                    const parent = target.parentElement
+                    if (parent) {
+                      parent.innerHTML = `
+                        <div class="w-full h-full bg-gradient-to-br from-brand-secondary/20 to-brand-gold-light/20 flex items-center justify-center">
+                          <span class="text-6xl">${flavor.emoji}</span>
+                        </div>
+                      `
+                    }
+                  }}
+                />
               </div>
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
@@ -144,7 +162,7 @@ export default function FlavorsPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center bg-black/20 backdrop-blur-sm rounded-2xl p-6 border border-brand-secondary/20">
               <div className="w-20 h-20 bg-brand-secondary/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">🌱</span>
+                <FontAwesomeIcon icon={faLeaf} className="text-3xl text-brand-secondary" />
               </div>
               <h3 className="text-xl font-bold text-brand-gold-light mb-2">素材選び</h3>
               <p className="text-luxury-cream/80 text-content japanese-text">
@@ -153,7 +171,7 @@ export default function FlavorsPage() {
             </div>
             <div className="text-center bg-black/20 backdrop-blur-sm rounded-2xl p-6 border border-brand-secondary/20">
               <div className="w-20 h-20 bg-brand-secondary/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">⚗️</span>
+                <FontAwesomeIcon icon={faSeedling} className="text-3xl text-brand-secondary" />
               </div>
               <h3 className="text-xl font-bold text-brand-gold-light mb-2">調合</h3>
               <p className="text-luxury-cream/80 text-content japanese-text">
@@ -162,7 +180,7 @@ export default function FlavorsPage() {
             </div>
             <div className="text-center bg-black/20 backdrop-blur-sm rounded-2xl p-6 border border-brand-secondary/20">
               <div className="w-20 h-20 bg-brand-secondary/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">❄️</span>
+                <FontAwesomeIcon icon={faSnowflake} className="text-3xl text-brand-secondary" />
               </div>
               <h3 className="text-xl font-bold text-brand-gold-light mb-2">熟成</h3>
               <p className="text-luxury-cream/80 text-content japanese-text">
