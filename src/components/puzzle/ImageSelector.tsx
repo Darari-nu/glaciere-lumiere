@@ -58,12 +58,14 @@ export function ImageSelector() {
               />
             </div>
             <div className="p-4">
+              {/* 日本語を完全に削除、英語のみ表示 */}
               <div 
                 className="font-bold text-gray-800 mb-1 text-center" 
                 style={{
                   fontSize: '14px !important',
                   lineHeight: '1.4 !important',
-                  fontWeight: '600 !important'
+                  fontWeight: '600 !important',
+                  display: 'block !important'
                 }}
               >
                 {image.name}
